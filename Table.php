@@ -1,18 +1,11 @@
 <?php
 class Cell {
     
-    private $value;
-    protected $style;
+    private $value = "Пустая ячейка";
+    protected $style ="Default";
     protected $html_code;
-    
-   function __construct($value = "Пустая ячейка",$style ="default",$html_code="<th>Нет значения</th>") {
-        
-    $this -> value =  $value ;
-    $this -> style = $style ;
-    $this -> html_code  = $html_code;                              
-    }
-       
-       protected function setCell($value) {
+              
+    protected function setCell($value) {
            
             $this -> value = $value;                
     }    
@@ -39,18 +32,12 @@ class Cell {
 }
 
  class Row extends Cell{
-   
-      private $value_row;            
      
-   function __construct($value = ["1","2"]) { 
-       
-    $this -> value_row =  $value ;
+     private $value_row;
         
-    }
-     
     protected function setHtmlCodeRow() {
                       
-    $value  = $this -> value_row ;
+   $value = $this -> value_row;
     $style  = $this -> style ;
         
         foreach ($value as $a) {
@@ -63,14 +50,12 @@ class Cell {
          $this -> html_code  = "<tr  class = \""."$style"."\">"."$data"."</tr>";
              return $this -> html_code; 
         
-    }
-        
+    }        
           protected function setRow($value){
               $this -> value_row = $value;
               
           }          
   }
-
 
 class Table extends Row  {  
     
