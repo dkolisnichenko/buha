@@ -20,14 +20,14 @@ $data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3ere
   
 $table = new Table();
 $table -> setStyleTable("table table-hover","active","info");
-$data  = $table -> setHtmlCodeTable("Расходы",$title_table ,$data_table);
+$data  = $table -> getTable("Расходы",$title_table ,$data_table);
 
  include 'table_template.php';
 
 
 $table1 = new Table();
 $table1 -> setStyleTable("table table-hover","active","info");
-$data  = $table1 -> setHtmlCodeTable("Доходы",$title_table ,$data_table);
+$data  = $table1 -> getTable("Доходы",$title_table ,$data_table);
 
  include 'table_template.php';
 

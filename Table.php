@@ -45,7 +45,7 @@ class Table extends Row  {
     protected $style_title;
     protected  $style_table;      
     
-    public function setHtmlCodeTable($name,$title,$data) {
+    public function getTable($name,$title,$data) {
           
     $this -> name = $name;  
     $this -> title  = $title;
@@ -86,7 +86,40 @@ class Table extends Row  {
     
 }
     
-    
+    class AdminTable extends Table {
+        
+             protected $name_alias;
+        
+     public function getAdminTable($name,$name_alias,$title,$data,$id) {
+          
+    $this -> name = $name;  
+    $this -> name_alias = $name_alias;  
+    $this -> title  = $title;
+    $this -> data = $data;
+    $style_table = $this -> style_table;
+    $style_title = $this -> style_title;
+    $style_data  = $this -> style_data;
+           
+        $row = new Row();
+           
+        $row -> setStyle($style_title);
+        $dat .= $row -> setHtmlCodeRow($title,$style_table); 
+         
+     
+        $arr= array_chunk($data, count($title));
+        $row = new Row();
+        $row -> setStyle($style_data);
+        
+     for($i = 0; $i < count($arr); $i++) {   
+         
+         $dat .= $row -> setHtmlCodeRow($arr[$i],$style_data);    }
+                
+        $this -> html_code  = "<h4>"."$name"."</h4>"."<table  class = \""."$style_table"."\">"."$dat"."</table>";
+             return $this -> html_code; 
+   
+    }
+        
+    }
     
 
 
