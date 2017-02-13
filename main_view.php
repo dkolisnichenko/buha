@@ -18,22 +18,16 @@ include 'body.php';
 $title_table = array( "php",  "html",  "css");
 $data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
   
-$table = new Table("Расходы",$title_table ,$data_table);
-$table -> setStyleTable("table table-hover");
-$table -> setStyleTitle("active");
-$table -> setStyleData("info");
-$table -> setHtmlCodeTable();
-$data = $table -> getHtmlCode();
+$table = new Table();
+$table -> setStyleTable("table table-hover","active","info");
+$data  = $table -> setHtmlCodeTable("Расходы",$title_table ,$data_table);
 
  include 'table_template.php';
 
 
-$table = new Table("Доходы",$title_table ,$data_table);
-$table -> setStyleTable("table table-hover");
-$table -> setStyleTitle("active");
-$table -> setStyleData("warning");
-$table -> setHtmlCodeTable();
-$data = $table -> getHtmlCode();
+$table1 = new Table();
+$table1 -> setStyleTable("table table-hover","active","info");
+$data  = $table1 -> setHtmlCodeTable("Доходы",$title_table ,$data_table);
 
  include 'table_template.php';
 
