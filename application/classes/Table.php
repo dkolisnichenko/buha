@@ -76,7 +76,7 @@ class Table extends Row  {
          
          $dat .= $row -> setHtmlCodeRow($arr[$i],$style_data);    }
                 
-        $this -> html_code  = "<h4>"."$name"."</h4>"."<table  class = \""."$style_table"."\">"."$dat"."</table>";
+        $this -> html_code  = "<h4>".$name."</h4>"."<table  class = \"".$style_table."\">".$dat."</table>";
              return $this -> html_code; 
    
     }
@@ -116,7 +116,7 @@ class Table extends Row  {
      
         $row = new Row();
         $teg = new Teg(); 
-        $href="$name_alias"."/add";
+        $href=$name_alias."/add";
         $dat = $teg -> setTeg_a($href,                       "tooltip","auto","Добавить запись","  + Добавить запись");
         
          
@@ -135,9 +135,9 @@ class Table extends Row  {
         $arr1 =$arr[$i];
          
         $teg = new Teg(); 
-        $href="$name_alias"."/edit/"."$id[$i]";
+        $href=$name_alias."/edit/".$id[$i];
         $str= $teg -> setTeg_a($href,                       "tooltip","auto","Редактировать запись",$edit);
-        $href="$name_alias"."/del/"."$id[$i]";
+        $href=$name_alias."/del/".$id[$i];
         $str1= $teg -> setTeg_a($href,                       "tooltip","auto","Удалить запись",$del);
          
          $arr1[] =$str;
@@ -145,7 +145,7 @@ class Table extends Row  {
                 
          $dat .= $row -> setHtmlCodeRow($arr1,$style_data);    }
                 
-        $this -> html_code  = "<h4>"."$name"."</h4>"."<table  class = \""."$style_table"."\">"."$dat"."</table>";
+        $this -> html_code  = "<h4>".$name."</h4>"."<table  class = \"".$style_table."\">".$dat."</table>";
              return $this -> html_code; 
    
     }
