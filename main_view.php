@@ -15,6 +15,7 @@ require_once ('Table.php');
 include 'head.php';
 include 'body.php';
 
+
 $title_table = array( "php",  "html",  "css");
 $data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
   
@@ -30,6 +31,13 @@ $table1 -> setStyleTable("table table-hover","active","info");
 $data  = $table1 -> getTable("Доходы",$title_table ,$data_table);
 
  include 'table_template.php';
+
+$table2 = new AdminTable();
+$table2 -> setStyleTable("table table-hover","active","info");
+$data  = $table2 -> getAdminTable("Доходы","dohod",$title_table ,$data_table,["1","2"]);
+
+ include 'table_template.php';
+
 
 
 
