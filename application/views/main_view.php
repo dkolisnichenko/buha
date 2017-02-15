@@ -3,8 +3,7 @@
       <div  class="table-responsive"> 
           
     <?=$data ?>  
-      <?=$balance ?>     
-          
+            
                     
             </div> 
     <br>

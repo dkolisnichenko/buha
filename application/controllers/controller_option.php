@@ -18,7 +18,7 @@ class Controller_Option extends Controller
          $GLOBALS["balance"] =200;
         
         $data = $this->model->get_data();
-        $bal = $this->model->get_balance();
+    
 		$this->view->generate('main_view.php', 'template_view.php',$data);
 	}
 }

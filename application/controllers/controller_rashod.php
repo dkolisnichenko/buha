@@ -19,7 +19,6 @@ class Controller_Rashod extends Controller
          $GLOBALS["balance"] =200;
         
         $data = $this->model->get_data();
-        $bal = $this->model->get_balance();
-		$this->view->generate('main_view.php', 'template_view.php',$data);
+       	$this->view->generate('main_view.php', 'template_view.php',$data);
 	}
 }
