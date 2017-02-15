@@ -1,5 +1,5 @@
 <?php 
-class Model_Rashod extends Model
+class Model_Dohod extends Model
 {
       
 	public function get_data()
@@ -11,7 +11,7 @@ $data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3ere
   
 $table = new AdminTable();
 $table -> setStyleTable("table table-hover","active","info");
-$data  = $table -> getAdminTable("Расходы","rashod",$title_table ,$data_table,$id);
+$data  = $table -> getAdminTable("Доходы","dohod",$title_table ,$data_table,$id);
 
 		
         return $data;

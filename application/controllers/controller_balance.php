@@ -1,13 +1,13 @@
 <?php
 
-class Controller_Rashod extends Controller    
+class Controller_Balance extends Controller    
 {
     
     
    
 	function __construct()
 	{
-		$this->model = new Model_Rashod();
+		$this->model = new Model_Balance();
 		$this->view = new View();
        
 	}

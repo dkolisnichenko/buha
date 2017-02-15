@@ -1,19 +1,18 @@
 <?php
 
-class Controller_Rashod extends Controller    
+class Controller_Option extends Controller    
 {
     
     
    
 	function __construct()
 	{
-		$this->model = new Model_Rashod();
+		$this->model = new Model_Option();
 		$this->view = new View();
        
 	}
 	
 	    
-    
 	function action_index()
 	{	
          $GLOBALS["balance"] =200;

@@ -25,7 +25,7 @@
                             
 <ul class="dropdown-menu">
  <li><a href="rashod"> Расходы </a></li>
-     <li><a href="prihod"> Доходы </a></li>
+     <li><a href="dohod"> Доходы </a></li>
      <li> <a href="balance"> 
           Баланс карты 
          </a></li>
