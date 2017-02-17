@@ -17,7 +17,7 @@ class Controller_Add extends Controller
             
             $link = "rashod";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("rashod");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -30,7 +30,7 @@ class Controller_Add extends Controller
             
             $link = "dohod";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("dohod");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -42,7 +42,7 @@ class Controller_Add extends Controller
             
             $link = "balance";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("balance");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -58,7 +58,7 @@ class Controller_Add extends Controller
             
             $link = "category";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("category");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -70,7 +70,7 @@ class Controller_Add extends Controller
             
             $link = "item";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("item");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -83,7 +83,7 @@ class Controller_Add extends Controller
             
             $link = "cat_balance";   
               
-            $data = $this->model->get_data();    
+            $data = $this->model->get_data_add("cat_balance");    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
