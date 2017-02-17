@@ -18,13 +18,13 @@ class View
     
     	function generate_table($content_view, $template_view, $title_table = null,$data_table = null,$id = null)
 	{
-		/*
-		if(is_array($data)) {
-			// преобразуем элементы массива в переменные
-			extract($data);
-		}
-		*/
-		
+			
+		include 'application/views/'.$template_view;
+	}
+    
+      	function generate_form($content_view, $template_view, $link = null,$kat = null,$item = null)
+	{
+			
 		include 'application/views/'.$template_view;
 	}
     

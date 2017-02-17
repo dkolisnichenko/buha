@@ -11,17 +11,7 @@ class Controller_Rashod extends Controller
        
 	}
 	
-	    function action_edit() {
-            
-            $data= $GLOBALS['id'] ;
-            $this->view->generate('rashod_view.php', 'template_view.php',$data);
-        }  
-    
-    	    function action_del() {
-            
-            $data= $GLOBALS['id'] ;
-            $this->view->generate('rashod_view.php', 'template_view.php',$data);
-        }  
+	 
     
 	function action_index()
 	{	

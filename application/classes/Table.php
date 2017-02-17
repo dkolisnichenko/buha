@@ -116,7 +116,7 @@ class Table extends Row  {
      
         $row = new Row();
         $teg = new Teg(); 
-        $href=$name_alias."/add";
+        $href="/add/".$name_alias;
         $dat = $teg -> setTeg_a($href,                       "tooltip","auto","Добавить запись","  + Добавить запись");
         
          
@@ -135,9 +135,9 @@ class Table extends Row  {
         $arr1 =$arr[$i];
          
         $teg = new Teg(); 
-        $href=$name_alias."/edit/".$id[$i];
+        $href="edit/".$name_alias."/".$id[$i];
         $str= $teg -> setTeg_a($href,                       "tooltip","auto","Редактировать запись",$edit);
-        $href=$name_alias."/del/".$id[$i];
+        $href="del/".$name_alias."/".$id[$i];
         $str1= $teg -> setTeg_a($href,                       "tooltip","auto","Удалить запись",$del);
          
          $arr1[] =$str;

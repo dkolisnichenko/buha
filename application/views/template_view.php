@@ -24,13 +24,13 @@
 </button>
                             
 <ul class="dropdown-menu">
- <li><a href="rashod"> Расходы </a></li>
-     <li><a href="dohod"> Доходы </a></li>
-     <li> <a href="balance"> 
+ <li><a href="/rashod"> Расходы </a></li>
+     <li><a href="/dohod"> Доходы </a></li>
+     <li> <a href="/balance"> 
           Баланс карты 
          </a></li>
      <li class="divider"></li>    
-     <li><a href="option"> <span class="glyphicon glyphicon-option-vertical"></span>Настройки </a></li>
+     <li><a href="/option"> <span class="glyphicon glyphicon-option-vertical"></span>Настройки </a></li>
  </ul>  
         
 

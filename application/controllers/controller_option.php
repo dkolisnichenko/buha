@@ -12,6 +12,7 @@ class Controller_Option extends Controller
        
 	}
 	
+        
 	    
 	function action_index()
 	{	
