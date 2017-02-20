@@ -17,7 +17,8 @@ class Controller_Add extends Controller
             
             $link = "rashod";   
               
-            $data = $this->model->get_data_add("rashod");    
+            $data = $this->model->get_data_add($link );  
+            $date = $data['date'];
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -30,7 +31,7 @@ class Controller_Add extends Controller
             
             $link = "dohod";   
               
-            $data = $this->model->get_data_add("dohod");    
+            $data = $this->model->get_data_add($link );    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
@@ -41,16 +42,16 @@ class Controller_Add extends Controller
             $GLOBALS["balance"] =200;
             
             $link = "balance";   
-              
-            $data = $this->model->get_data_add("balance");    
-            $kat=$data['kat'];
-            $item = $data['item'];
-            $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);
+                
+           $data = $this->model->get_data_add($link);  
+            $date = $data['date'];
+            $kat=$data['operation'];
+            $sum = $data['sum'];
+            $coment = $data['coment'];
+            $this->view->generate_form1('edit_view1.php', 'template_view.php',$link,$kat,$date,$sum,$coment);
         }  
     
-    
-     
-    
+        
     
     	    function action_category() {
             
@@ -58,7 +59,7 @@ class Controller_Add extends Controller
             
             $link = "category";   
               
-            $data = $this->model->get_data_add("category");    
+            $data = $this->model->get_data_add($link );    
             $kat=$data['kat'];
             $item = $data['item'];
             $this->view->generate_form('add_view.php', 'template_view.php',$link,$kat,$item);

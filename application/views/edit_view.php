@@ -4,7 +4,7 @@
  <div class="form-group">
   <label for="Date" class="col-sm-2 control-label">Введите дату</label>
   <div class="col-sm-10">
-   <input type="date" class="form-control" id="date" placeholder="Date" value="" name="date" autofocus required>
+   <input type="date" class="form-control" id="date" placeholder="Date" value="<?=$date ?>" name="date" autofocus required>
   </div>    
  </div>
      <div class="form-group">
@@ -31,7 +31,7 @@
      <div class="form-group">
   <label for="sum" class="col-sm-2 control-label">Введите сумму в грн.</label>
   <div class="col-sm-10">
-   <input type="float" class="form-control" id="float" placeholder="Введите сумму расходов" value="" name="sum" required >
+   <input type="float" class="form-control" id="float" placeholder="Введите сумму расходов" value="<?=$sum ?>" name="sum" required >
   </div>    
  </div>
     
@@ -39,7 +39,7 @@
   <label for="kom" class="col-sm-2 control-label">Комментарии:</label>
                  <div class="col-sm-10">      
         <textarea class="form-control" rows="5" name='coment' >
-            
+            <?=$coment ?>
            </textarea>
   </div>    
  </div>
