@@ -4,16 +4,16 @@ class Model_Dohod extends Model
       
 	public function get_data()
 	{	        
-            
-$title_table = array( "php",  "html",  "css");
-$data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
-        $id =["1","2"];
-  
-$table = new AdminTable();
-$table -> setStyleTable("table table-hover","active","info");
-$data  = $table -> getAdminTable("Доходы","dohod",$title_table ,$data_table,$id);
-
-		
-        return $data;
+         $conect = new DB();   
+               
+        $data_table = $conect -> get_db_data('full_d');
+       $title_table = $conect -> get_db_data('full_d_title');
+        
+         //$title_table =['1','2','3','1','2','3'];
+        $arr[0]=$title_table;        
+       $arr[1]=$data_table;
+      
+        
+return $arr;
 	}
 }

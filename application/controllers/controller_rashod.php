@@ -20,7 +20,6 @@ class Controller_Rashod extends Controller
        $data = $this->model->get_data();
         $title_table=$data[0];
         $data_table=$data[1];
-        $id=$data[2];
-       	$this->view->generate_table('rashod_view.php', 'template_view.php',$title_table,$data_table,$id);
+        $this->view->generate_table('rashod_view.php', 'template_view.php',$title_table,$data_table);
 	}
 }

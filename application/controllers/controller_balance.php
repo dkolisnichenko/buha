@@ -17,8 +17,11 @@ class Controller_Balance extends Controller
 	{	
          $GLOBALS["balance"] =200;
         
-        $data = $this->model->get_data();
-       
-		$this->view->generate('main_view.php', 'template_view.php',$data);
+           
+       $data = $this->model->get_data();
+        $title_table=$data[0];
+        $data_table=$data[1];
+        $this->view->generate_table('balance_view.php', 'template_view.php',$title_table,$data_table);
 	}
+	
 }

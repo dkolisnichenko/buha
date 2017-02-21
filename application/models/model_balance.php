@@ -4,16 +4,16 @@ class Model_Balance extends Model
       
 	public function get_data()
 	{	        
-            
-$title_table = array( "php",  "html",  "css");
-$data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
-$id =["1","2"];
-  
-$table = new AdminTable();
-$table -> setStyleTable("table table-hover","active","info");
-$data  = $table -> getAdminTable("Баланс","balance",$title_table ,$data_table,$id);
+        $conect = new DB();   
+               
+        $data_table = $conect -> get_db_data('card_zp');
+        $title_table = $conect -> get_db_data('card_zp_title');
+        
+        $arr[0]=$title_table;        
+       $arr[1]=$data_table;
+      
+        
+return $arr;    
 
-		
-        return $data;
 	}
 }

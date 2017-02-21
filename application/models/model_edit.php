@@ -32,7 +32,7 @@ class Model_Edit extends Model
         
         
         
-           if ($act =="category"){
+           if ($act =="kat"){
         
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }
@@ -43,7 +43,7 @@ class Model_Edit extends Model
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }
         
-           if ($act =="cat_balance"){
+           if ($act =="card"){
         
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }

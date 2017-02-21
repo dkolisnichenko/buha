@@ -1,9 +1,9 @@
      <div  class="table-responsive"> 
           
     <?php    
-$table = new Table();
+$table = new AdminTable();
 $table -> setStyleTable("table table-hover","active","info");
-$html_code  = $table -> getTable("Расходы",$title_table, $data_table);
+$html_code  = $table -> getAdminTable("Таблица Категорий","cat",$title_table, $data_table);
 print($html_code);
                        
           ?>  
@@ -15,9 +15,9 @@ print($html_code);
      <div  class="table-responsive"> 
           
     <?php    
-$table = new Table();
+$table = new AdminTable();
 $table -> setStyleTable("table table-hover","active","info");
-$html_code  = $table -> getTable("Баланс",$title_table1, $data_table1);
+$html_code  = $table -> getAdminTable("Таблица Статей","item",$title_table1, $data_table1);
 print($html_code);
                        
           ?>  
@@ -28,9 +28,9 @@ print($html_code);
      <div  class="table-responsive"> 
           
     <?php    
-$table = new Table();
+$table = new AdminTable();
 $table -> setStyleTable("table table-hover","active","info");
-$html_code  = $table -> getTable("Доходы",$title_table2, $data_table2);
+$html_code  = $table -> getAdminTable("Таблица операций по карте",'card',$title_table2, $data_table2);
 print($html_code);
                        
           ?>  

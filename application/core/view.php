@@ -16,7 +16,7 @@ class View
 		include 'application/views/'.$template_view;
 	}
     
-    	function generate_table($content_view, $template_view, $title_table = null,$data_table = null,$id = null)
+    	function generate_table($content_view, $template_view, $title_table = null,$data_table = null,$title_table1 = null,$data_table1 = null,$title_table2 = null,$data_table2 = null)
 	{
 			
 		include 'application/views/'.$template_view;

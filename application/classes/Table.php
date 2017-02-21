@@ -100,7 +100,7 @@ class Table extends Row  {
         
              protected $name_alias;
         
-     public function getAdminTable($name,$name_alias,$title,$data,$id) {
+     public function getAdminTable($name,$name_alias,$title,$data) {
          
         $edit ="Редактировать";
         $del = "Удалить";
@@ -126,18 +126,17 @@ class Table extends Row  {
         $row -> setStyle($style_title);
         $dat .= $row -> setHtmlCodeRow($title,$style_table);             
         $arr= array_chunk($data, count($title)-2);
-         if (count($arr) != count($id)) { print("Нправильное кол-во id в массиве");exit; }
         $row = new Row();
         $row -> setStyle($style_data);
         
      for($i = 0; $i < count($arr); $i++) {  
 
-        $arr1 =$arr[$i];
+         $arr1=$arr[$i];
          
         $teg = new Teg(); 
-        $href="edit/".$name_alias."/".$id[$i];
+        $href="edit/".$name_alias."/".$arr1[0];
         $str= $teg -> setTeg_a($href,                       "tooltip","auto","Редактировать запись",$edit);
-        $href="del/".$name_alias."/".$id[$i];
+        $href="del/".$name_alias."/".$arr1[0];
         $str1= $teg -> setTeg_a($href,                       "tooltip","auto","Удалить запись",$del);
          
          $arr1[] =$str;

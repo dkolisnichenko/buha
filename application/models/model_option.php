@@ -3,30 +3,25 @@ class Model_Option extends Model
 {
       
 	public function get_data()
-	{	        
-            
-$title_table = array( "php",  "html",  "css");
-$data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
-$id =["1","2"];
+	{	  
+         $conect = new DB();   
+               
+        $data_table = $conect -> get_db_data('kat');
+        $title_table = $conect -> get_db_data('kat_title');
         
-$title_table1 = array( "Статья Баланса");
-$data_table1 = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");
-$id1 =["1","2","3","4","5","6"];
+        $data_table1 = $conect -> get_db_data('item');
+        $title_table1 = $conect -> get_db_data('item_title');
+        
+        $data_table2 = $conect -> get_db_data('card_operation');
+        $title_table2 = $conect -> get_db_data('card_operation_title');
   
-$table = new AdminTable();
-$table -> setStyleTable("table table-hover","active","info");
-$data  .= $table -> getAdminTable("Категории","category",$title_table ,$data_table,$id);
-        
-//$table1 = new AdminTable();
-$table -> setStyleTable("table table-hover","active","info");
-$data  .= $table -> getAdminTable("Статьи","item",$title_table ,$data_table,$id);
-        
-//$table1 = new AdminTable();
-$table -> setStyleTable("table table-hover","active","info");
-$data  .= $table -> getAdminTable("Статьи Баланса","cat_balance",$title_table1 ,$data_table1,$id1);
-
-
-		
-        return $data;
+        $arr[0]=$title_table;
+        $arr[1]=$data_table; 
+        $arr[2]=$title_table1;
+        $arr[3]=$data_table1;  
+        $arr[4]=$title_table2;
+        $arr[5]=$data_table2;
+                		
+        return $arr;
 	}
 }

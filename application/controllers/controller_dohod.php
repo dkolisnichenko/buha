@@ -16,10 +16,11 @@ class Controller_Dohod extends Controller
     
 	function action_index()
 	{	
-         $GLOBALS["balance"] =200;
+           $GLOBALS["balance"] =200;
         
-        $data = $this->model->get_data();
-     
-		$this->view->generate('main_view.php', 'template_view.php',$data);
+       $data = $this->model->get_data();
+        $title_table=$data[0];
+        $data_table=$data[1];
+        $this->view->generate_table('dohod_view.php', 'template_view.php',$title_table,$data_table);
 	}
 }

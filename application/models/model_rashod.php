@@ -4,15 +4,14 @@ class Model_Rashod extends Model
       
 	public function get_data()
 	{	        
+        $conect = new DB();   
         
-$title_table = array( "php",  "html",  "css");
-  $arr[0]=$title_table;
-                 
-$data_table = array( "php_d", "html5",  "css3", "php_der",  "html5er",  "css3erer");   
+        $data_table = $conect -> get_db_data('full','date');
+        $title_table = $conect -> get_db_data('full_title');
+        
+        $arr[0]=$title_table;        
        $arr[1]=$data_table;
-        
-        $id =["1","2"];
-        $arr[2]=$id;
+      
         
 return $arr;
      
