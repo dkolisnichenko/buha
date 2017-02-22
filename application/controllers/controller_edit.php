@@ -56,21 +56,18 @@ class Controller_Edit extends Controller
             $this->view->generate_form1('edit_view1.php', 'template_view.php',$link,$kat,$date,$sum,$coment);
         
         }  
+        
     
-    
-     
-    
-    
-    	    function action_category() {
+    	    function action_cat() {
                        $GLOBALS["balance"] =200;
             
-            $link = "category";   
+            $link = "cat";   
               
             $data = $this->model->get_data_add($link);  
            
             $kat=$data['kat'];
            
-            $this->view->generate_form('edit_view.php', 'template_view.php',$link,$kat);
+            $this->view->generate_form('edit_view2.php', 'template_view.php',$link,$kat);
                 
         }  
     
@@ -82,20 +79,20 @@ class Controller_Edit extends Controller
             $data = $this->model->get_data_add($link);  
         
             $item = $data['item'];           
-            $this->view->generate_form('edit_view.php', 'template_view.php',$link,$item);
+            $this->view->generate_form('edit_view3.php', 'template_view.php',$link,$item);
         
         }  
     
     
-       	    function action_cat_balance() {
+       	    function action_card() {
                        $GLOBALS["balance"] =200;
             
-            $link = "cat_balance";   
+            $link = "card";   
               
             $data = $this->model->get_data_add($link);  
             $kat = $data['cat_balance'];
                 
-            $this->view->generate_form('edit_view.php', 'template_view.php',$link,$kat);
+            $this->view->generate_form('edit_view4.php', 'template_view.php',$link,$kat);
         }  
     
     	 

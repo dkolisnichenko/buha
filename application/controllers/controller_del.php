@@ -47,7 +47,7 @@ class Controller_Del extends Controller
         }  
                 
     
-        function action_category() {
+        function action_cat() {
             
          
              $GLOBALS["balance"] =200;
@@ -71,7 +71,7 @@ class Controller_Del extends Controller
         }  
     	 
     
-    function action_cat_balance() {
+    function action_card() {
             
          
              $GLOBALS["balance"] =200;

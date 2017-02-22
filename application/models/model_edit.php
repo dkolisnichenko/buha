@@ -32,7 +32,7 @@ class Model_Edit extends Model
         
         
         
-           if ($act =="kat"){
+           if ($act =="cat"){
         
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }

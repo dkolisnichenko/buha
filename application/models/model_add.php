@@ -6,7 +6,7 @@ class Model_Add extends Model
         if ($act =="rashod"){
             
         $conect = new DB();   
-        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('card_operation','id_operation','operation');
+        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('kat','id_kat','kat');
                    
         $data['kat'] =$kats;
         $data['item'] =$items;
@@ -15,7 +15,7 @@ class Model_Add extends Model
         
            if ($act =="dohod"){
            $conect = new DB();   
-        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('card_operation','id_operation','operation');
+        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('kat','id_kat','kat');
                    
         $data['kat'] =$kats;
         $data['item'] =$items;
@@ -26,9 +26,7 @@ class Model_Add extends Model
                        
         $conect = new DB();   
         $data['operation'] = $conect -> get_db_data('card_operation','id_operation','operation'); 
-        
-                       
-      
+                                     
            }
         
         
