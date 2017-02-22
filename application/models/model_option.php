@@ -6,13 +6,13 @@ class Model_Option extends Model
 	{	  
          $conect = new DB();   
                
-        $data_table = $conect -> get_db_data('kat');
+        $data_table = $conect -> get_db_data('kat','id_kat');
         $title_table = $conect -> get_db_data('kat_title');
         
-        $data_table1 = $conect -> get_db_data('item');
+        $data_table1 = $conect -> get_db_data('item','id_item');
         $title_table1 = $conect -> get_db_data('item_title');
         
-        $data_table2 = $conect -> get_db_data('card_operation');
+        $data_table2 = $conect -> get_db_data('card_operation','id_operation');
         $title_table2 = $conect -> get_db_data('card_operation_title');
   
         $arr[0]=$title_table;

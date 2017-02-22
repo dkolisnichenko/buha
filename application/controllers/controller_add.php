@@ -15,7 +15,8 @@ class Controller_Add extends Controller
             
              $GLOBALS["balance"] =200;
             
-            $link = "rashod";   
+            $link = "rashod";  
+            
               
             $data = $this->model->get_data_add($link );  
             $date = $data['date'];
@@ -44,20 +45,18 @@ class Controller_Add extends Controller
             $link = "balance";   
                 
            $data = $this->model->get_data_add($link);  
-            $date = $data['date'];
             $kat=$data['operation'];
-            $sum = $data['sum'];
-            $coment = $data['coment'];
-            $this->view->generate_form1('edit_view1.php', 'template_view.php',$link,$kat,$date,$sum,$coment);
+          
+            $this->view->generate_form1('edit_view1.php', 'template_view.php',$link,$kat);
         }  
     
         
     
-    	    function action_category() {
+    	    function action_cat() {
             
             $GLOBALS["balance"] =200;
             
-            $link = "category";   
+            $link = "cat";   
               
             $data = $this->model->get_data_add($link );    
             $kat=$data['kat'];
@@ -78,11 +77,11 @@ class Controller_Add extends Controller
         }  
     
     
-       	    function action_cat_balance() {
+       	    function action_card() {
             
             $GLOBALS["balance"] =200;
             
-            $link = "cat_balance";   
+            $link = "card";   
               
             $data = $this->model->get_data_add("cat_balance");    
             $kat=$data['kat'];

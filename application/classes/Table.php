@@ -134,10 +134,14 @@ class Table extends Row  {
          $arr1=$arr[$i];
          
         $teg = new Teg(); 
+         
         $href="edit/".$name_alias."/".$arr1[0];
+        $edit="<span class="."\"glyphicon glyphicon-edit\""."></span>";
         $str= $teg -> setTeg_a($href,                       "tooltip","auto","Редактировать запись",$edit);
-        $href="del/".$name_alias."/".$arr1[0];
-        $str1= $teg -> setTeg_a($href,                       "tooltip","auto","Удалить запись",$del);
+         
+         $href="del/".$name_alias."/".$arr1[0];        
+         $del="<span class="."\"glyphicon glyphicon-remove\""."></span>";      
+         $str1= $teg -> setTeg_a($href,                       "tooltip","auto","Удалить запись",$del);
          
          $arr1[] =$str;
          $arr1[] =$str1;

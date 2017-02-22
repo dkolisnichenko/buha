@@ -4,23 +4,35 @@ class Model_Add extends Model
       
 	public function get_data_add($act) {
         if ($act =="rashod"){
+            
+        $conect = new DB();   
+        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('card_operation','id_operation','operation');
                    
-         $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4"];
+        $data['kat'] =$kats;
+        $data['item'] =$items;
+           
         }
         
            if ($act =="dohod"){
-        
-         $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4","5","dohodd"]; }
+           $conect = new DB();   
+        $items = $conect -> get_db_data('item','id_item','item'); $kats = $conect -> get_db_data('card_operation','id_operation','operation');
+                   
+        $data['kat'] =$kats;
+        $data['item'] =$items;
+            
+           }
         
            if ($act =="balance"){
+                       
+        $conect = new DB();   
+        $data['operation'] = $conect -> get_db_data('card_operation','id_operation','operation'); 
         
-         $data['kat'] =["1","2","3"];
-        $data['operation'] =["1","2","3","4"]; }
+                       
+      
+           }
         
         
-           if ($act =="category"){
+           if ($act =="cat"){
         
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }
@@ -31,7 +43,7 @@ class Model_Add extends Model
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }
         
-           if ($act =="cat_balance"){
+           if ($act =="card"){
         
          $data['kat'] =["1","2","3"];
         $data['item'] =["1","2","3","4"]; }
