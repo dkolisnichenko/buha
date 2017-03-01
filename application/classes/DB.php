@@ -7,6 +7,39 @@ private $MYSQL_USER= 'root';
 private $MYSQL_PASSWORD='';
 private $MYSQL_DB='buh';
     
+    public function get_db_data_id($table = null, $id=1) {
+      
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+       $column ='id';
+    if($table =='kat') $column='id_kat';
+    if($table =='item') $column='id_item';
+    if($table =='card_operation') $column='id_operation';
+        
+        !!!
+$query = "SELECT date,sum,coment FROM $table WHERE $column =$id";
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data['date']=$row[0];
+        $data['sum']=$row[1];
+        $data['coment']=$row[2];
+      
+    }  
+     
+       $result->close();
+}
+$mysqli->close();            
+
+        return $data;        
+    }
+    
+    
+    
     public function get_db_data($table = null, $sort = 'id',$columns ='*') {
       
     $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
@@ -28,8 +61,8 @@ if ($mysqli->connect_errno) {
                 break;
             }
         }
-             
-$query = "SELECT $columns FROM $table  ORDER BY $sort DESC lIMIT 20";
+        
+$query = "SELECT $columns FROM $table ORDER BY $sort DESC lIMIT 20";
 if ($result = $mysqli->query($query)) {     
        while ($row = $result->fetch_row()) {
            for ($i = 0; $i < count($row); $i++) {               
@@ -183,5 +216,7 @@ $mysqli->close();
         return $data;
         
     }
+    
+
     
 }
