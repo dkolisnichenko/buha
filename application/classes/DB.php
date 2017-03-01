@@ -156,4 +156,32 @@ $mysqli->close();
         
     }
     
+    
+    
+    
+        
+public function del_db_data($table,$id) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+ $column ='id';
+    if($table =='kat') $column='id_kat';
+    if($table =='item') $column='id_item';
+    if($table =='card_operation') $column='id_operation';
+    
+if ($mysqli->query("DELETE FROM $table WHERE $column = $id")) {
+    $data = "Cтрока успешно удалена из таблицы $table";
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+    }
+    
 }

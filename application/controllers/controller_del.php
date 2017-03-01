@@ -14,11 +14,12 @@ class Controller_Del extends Controller
             
              $GLOBALS["balance"] =200;
             
-            // Нужно удалить данные из БД    
+            $table = 'full';            
             $id=  $GLOBALS["id"];
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
             
         }  
     
@@ -28,10 +29,12 @@ class Controller_Del extends Controller
          
              $GLOBALS["balance"] =200;
             
-            // Нужно Записать данные в БД            
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
+              $table = 'full_d';            
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
     
     
@@ -40,10 +43,12 @@ class Controller_Del extends Controller
          
              $GLOBALS["balance"] =200;
             
-            // Нужно Записать данные в БД            
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
+            $table = 'card_zp';            
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
                 
     
@@ -52,10 +57,12 @@ class Controller_Del extends Controller
          
              $GLOBALS["balance"] =200;
             
-            // Нужно Записать данные в БД            
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
+            $table = 'kat';            
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
     
     
@@ -64,11 +71,14 @@ class Controller_Del extends Controller
          
              $GLOBALS["balance"] =200;
             
-            // Нужно Записать данные в БД            
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
-        }  
+            $table = 'item';            
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
+        } 
+          
     	 
     
     function action_card() {
@@ -76,10 +86,12 @@ class Controller_Del extends Controller
          
              $GLOBALS["balance"] =200;
             
-            // Нужно Записать данные в БД            
-           
-            $data = $this->model->get_data();    
-            $this->view->generate('save_view.php', 'template_view.php',$data); 
+            $table = 'card_operation';            
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $data = $conect -> del_db_data($table,$id); 
+        $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
     
 	function action_index()
