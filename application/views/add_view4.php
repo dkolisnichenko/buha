@@ -1,6 +1,6 @@
 <br>
 
-<form class="form-horizontal" method="post" action="/update/<?=$link ?>/<?=$id ?>">
+<form class="form-horizontal" method="post" action="/save/<?=$link ?>">
   
     
      <div class="form-group">

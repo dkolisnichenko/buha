@@ -47,7 +47,7 @@ class Controller_Add extends Controller
            $data = $this->model->get_data_add($link);  
             $kat=$data['operation'];
           
-            $this->view->generate_form1('edit_view1.php', 'template_view.php',$link,$kat);
+            $this->view->generate_form1('add_view1.php', 'template_view.php',$link,$kat);
         }  
     
         
@@ -61,7 +61,7 @@ class Controller_Add extends Controller
             $data = $this->model->get_data_add($link );    
             $kat=$data['kat'];
             $item = $data['item'];
-            $this->view->generate_form('edit_view2.php', 'template_view.php',$link);
+            $this->view->generate_form('add_view2.php', 'template_view.php',$link);
         }  
     
        	    function action_item() {
@@ -73,7 +73,7 @@ class Controller_Add extends Controller
             $data = $this->model->get_data_add("item");    
             $kat=$data['kat'];
             $item = $data['item'];
-            $this->view->generate_form('edit_view3.php', 'template_view.php',$link);
+            $this->view->generate_form('add_view3.php', 'template_view.php',$link);
         }  
     
     
@@ -86,7 +86,7 @@ class Controller_Add extends Controller
             $data = $this->model->get_data_add("cat_balance");    
             $kat=$data['kat'];
             $item = $data['item'];
-            $this->view->generate_form('edit_view4.php', 'template_view.php',$link,$kat,$item);
+            $this->view->generate_form('add_view4.php', 'template_view.php',$link,$kat,$item);
         }  
     
     	 

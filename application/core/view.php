@@ -22,13 +22,13 @@ class View
 		include 'application/views/'.$template_view;
 	}
     
-      	function generate_form($content_view, $template_view, $link = null,$kat = null,$item = null,$date = null, $sum=null, $coment=null)
+      	function generate_form($content_view, $template_view, $link = null,$kat = null,$item = null,$date = null, $sum=null, $coment=null,$id=0)
 	{
 			
 		include 'application/views/'.$template_view;
 	}
     
-         	function generate_form1($content_view, $template_view, $link = null,$kat = null,$date = null, $sum=null, $coment=null)
+         	function generate_form1($content_view, $template_view, $link = null,$kat = null,$date = null, $sum=null, $coment=null,$id=null)
 	{
 			
 		include 'application/views/'.$template_view;

@@ -1,6 +1,6 @@
 <div class="container">
     <br>
-<form class="form-horizontal" method="post" action="/save/<?=$link ?>">
+<form class="form-horizontal" method="post" action="/update/<?=$link ?>/<?=$id ?>">
  <div class="form-group">
   <label for="Date" class="col-sm-2 control-label">Введите дату</label>
   <div class="col-sm-10">

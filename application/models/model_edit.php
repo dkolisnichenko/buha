@@ -9,50 +9,80 @@ class Model_Edit extends Model
             $id=  $GLOBALS["id"];
             
         $conect = new DB();   
-        $row = $conect -> get_db_data_id($table,$id); 
-           
-        $data['kat'] = $conect -> get_db_data('kat','id_kat','kat');
-        $data['item'] =$conect -> get_db_data('item','id_item','item');
+        $row = $conect -> get_db_data_id($table,$id);            
+$data['kat'] = $conect -> get_db_data('kat','id_kat','kat');    array_unshift( $data['kat'],$row['kat'] );
+ $data['item'] =$conect -> get_db_data('item','id_item','item');
+array_unshift( $data['item'],$row['item'] );    
         $data["date"]=$row['date'];
         $data["sum"]=$row['sum'];
         $data["coment"]=$row['coment'];
         }
         
            if ($act =="dohod"){
-   $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4"];
-        $data["date"]="11.08.2003";
-        $data["sum"]="500.65";
-        $data["coment"]="Редактирование проверка";
+            $table ='full_d';
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $row = $conect -> get_db_data_id($table,$id);            
+$data['kat'] = $conect -> get_db_data('kat','id_kat','kat');    array_unshift( $data['kat'],$row['kat'] );
+ $data['item'] =$conect -> get_db_data('item','id_item','item');
+array_unshift( $data['item'],$row['item'] );    
+        $data["date"]=$row['date'];
+        $data["sum"]=$row['sum'];
+        $data["coment"]=$row['coment'];
            
            }
         
            if ($act =="balance"){
+               
+            $table ='card_zp';
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $row = $conect -> get_db_data_id_card_zp($table,$id);     
+               
+        $data["date"]=$row['date'];
+        $data["sum"]=$row['sum'];       
+        $data['operation'] =$conect -> get_db_data('card_operation','id_operation','operation');
+array_unshift( $data['operation'],$row['operation'] ); 
+        $data["coment"]=$row['coment'];
+           
+           }
+        
                 
-        $data["date"]="11.08.2003";
-        $data["sum"]="500";        
-        $data['operation'] =["1","2","3","4"];
-        $data["coment"]="Редактирование проверка";
+           if ($act =="cat"){
+        
+            $table ='kat';
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $row = $conect -> get_db_data_id_kat($table,$id);            $data['kat'] = $row['kat'];
            
            }
         
         
-        
-           if ($act =="cat"){
-        
-         $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4"]; }
-        
-        
            if ($act =="item"){
-        
-         $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4"]; }
+            
+               $table ='item';
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $row = $conect -> get_db_data_id_kat($table,$id);            $data['item'] = $row['item'];
+           
+           }
         
            if ($act =="card"){
         
-         $data['kat'] =["1","2","3"];
-        $data['item'] =["1","2","3","4"]; }
+            $table ='card_operation';
+            $id=  $GLOBALS["id"];
+            
+        $conect = new DB();   
+        $row = $conect -> get_db_data_id_code($table,$id); 
+               
+               $data['operation'] = $row['operation'];  
+               $data['code_operation'] = $row['code_operation'];  
+                  
+           }
         
         
         return $data;

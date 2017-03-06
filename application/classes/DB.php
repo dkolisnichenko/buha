@@ -20,24 +20,118 @@ if ($mysqli->connect_errno) {
     if($table =='kat') $column='id_kat';
     if($table =='item') $column='id_item';
     if($table =='card_operation') $column='id_operation';
+              
+  
+    $query = "SELECT date,sum,coment,kat,item FROM $table WHERE $column =$id";     
         
-        !!!
-$query = "SELECT date,sum,coment FROM $table WHERE $column =$id";
 if ($result = $mysqli->query($query)) {     
     while ($row = $result->fetch_row()) {
-        $data['date']=$row[0];
+        $data['date']=$row[0];  
         $data['sum']=$row[1];
         $data['coment']=$row[2];
+        $data['kat']=$row[3];
+        $data['item']=$row[4];
       
     }  
      
        $result->close();
 }
 $mysqli->close();            
-
+    
+ 
+        
         return $data;        
     }
     
+    
+     public function get_db_data_id_card_zp($table = null, $id=1) {
+      
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+       $column ='id';
+    if($table =='kat') $column='id_kat';
+    if($table =='item') $column='id_item';
+    if($table =='card_operation') $column='id_operation';
+   
+    $query = "SELECT date,operation,coment,zp_nach,zp_sn,correction FROM $table WHERE $column =$id";     
+        
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data['date']=$row[0];  
+        $data['operation']=$row[1];
+        $data['coment']=$row[2];
+        $data['zp_nach']=$row[3];
+        $data['zp_sn']=$row[4];
+        $data['correction']=$row[5];
+      
+    }  
+    $data['sum'] = $data['correction'] + $data['zp_sn'] + $data['zp_nach'];
+       $result->close();
+}
+$mysqli->close();      
+            
+        return $data;        
+    }
+    
+     public function get_db_data_id_kat($table = null, $id=1) {
+      
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+       $column ='id';
+    if($table =='kat') $column='id_kat';
+    if($table =='item') $column='id_item';
+    if($table =='card_operation') $column='id_operation';
+   
+    $query = "SELECT $table FROM $table WHERE $column =$id";     
+        
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data[$table]=$row[0];        
+    }  
+       $result->close();
+}
+$mysqli->close();      
+            
+        return $data;        
+    }
+    
+    public function get_db_data_id_code($table = null, $id=1) {
+      
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+       $column ='id';
+    if($table =='kat') $column='id_kat';
+    if($table =='item') $column='id_item';
+    if($table =='card_operation') $column='id_operation';
+   
+    $query = "SELECT operation,code_operation FROM $table WHERE $column =$id";     
+        
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data['operation']=$row[0];        
+        $data['code_operation']=$row[1];        
+    }  
+       $result->close();
+}
+$mysqli->close();      
+            
+        return $data;        
+    }
     
     
     public function get_db_data($table = null, $sort = 'id',$columns ='*') {
@@ -105,6 +199,8 @@ if ($mysqli->connect_errno) {
 
 if ($mysqli->query("INSERT into $table (date,kat,item,sum,coment) VALUES ('$date','$kat','$item','$sum','$coment')")) {
     $data = "Cтрока успешно добавлена в таблицу $table";
+} else {
+    $data = "Cтрока не добавлена в таблицу $table. Данные введены с ошибкой!!!";
 }
 
 $mysqli->close();
@@ -114,6 +210,34 @@ $mysqli->close();
     }
     
 
+    
+    public function update_db_data($table,$id,$date,$kat,$item,$sum,$coment) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        
+        $date= $mysqli->real_escape_string($date);
+        $kat = $mysqli->real_escape_string($kat);
+        $item= $mysqli->real_escape_string($item);
+        $sum= $mysqli->real_escape_string($sum);
+        $coment= $mysqli->real_escape_string($coment);
+
+if ($mysqli->query("UPDATE $table  SET  date ='$date' , kat= '$kat',item='$item',sum ='$sum',coment= '$coment' WHERE id = $id")) {
+    $data = "Cтрока успешноо обновлена  в таблице $table";
+} else {
+    $data = "Cтрока не обновлена в таблице $table. Данные введены с ошибкой!!!";
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+    }
     
 public function set_db_data_balance ($date, $operation, $sum, $coment ) {
         
@@ -138,6 +262,8 @@ if(substr_count($operation,'Зачисление') > 0 or substr_count($operatio
             
 if ($mysqli->query("INSERT into card_zp (date,operation,$column,coment) VALUES ('$date','$operation','$sum','$coment')")) {
     $data = "Cтрока успешно добавлена в таблицу!";
+} else {
+    $data = "Cтрока не добавлена в таблицу. Данные введены с ошибкой!!!";
 }
 
 $mysqli->close();
@@ -145,6 +271,45 @@ $mysqli->close();
         return $data;
         
     }
+    
+    
+    public function update_db_data_balance ($id,$date, $operation, $sum, $coment ) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        $date = $mysqli->real_escape_string($date);
+        $operation = $mysqli->real_escape_string($operation);     
+        $sum= $mysqli->real_escape_string($sum);
+        $coment= $mysqli->real_escape_string($coment);
+
+    //Определяем колонку в таблице для записи sum.
+if(substr_count($operation,'Корректировка') > 0)
+    $column = 'correction'; 
+if(substr_count($operation,'Снятие') > 0 or substr_count($operation,'Оплата') > 0)
+    $column = 'zp_sn';  
+if(substr_count($operation,'Зачисление') > 0 or substr_count($operation,'Начисление') > 0)
+    $column = 'zp_nach';
+        
+if ($mysqli->query("UPDATE card_zp  SET date ='$date' , operation= '$operation',zp_nach = null,zp_sn = null,correction = null,coment= '$coment' WHERE id = $id ")) 
+{
+  }
+            
+if ($mysqli->query("UPDATE card_zp  SET date ='$date' , operation= '$operation',$column ='$sum',coment= '$coment' WHERE id = $id ")) {
+    $data = "Cтрока успешно обновлена в таблице card_zp!";
+}  else {
+    $data = "Cтрока не обновленна в таблице $table. Данные введены с ошибкой!!!";
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+    }
+    
     
     public function set_db_data_option($table,$column) {
         
@@ -159,6 +324,35 @@ if ($mysqli->connect_errno) {
 
 if ($mysqli->query("INSERT into $table ($table) VALUES ('$column')")) {
     $data = "Cтрока успешно добавлена в таблицу $table";
+} else {
+    $data = "Cтрока не добавлена в таблицу $table. Данные введены с ошибкой!!!";
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+    }
+    
+     public function update_db_data_option($table,$id,$column) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        $column = $mysqli->real_escape_string($column);
+         
+            $col ='id';
+    if($table =='kat') $col='id_kat';
+    if($table =='item') $col='id_item';
+
+if ($mysqli->query("UPDATE $table  SET $table='$column'  WHERE $col = $id")) {
+    $data = "Cтрока успешно обновлена в таблице $table";
+} else {
+    $data = "Cтрока не обновлена в таблице $table. Данные введены с ошибкой!!!";
 }
 
 $mysqli->close();
@@ -181,6 +375,8 @@ if ($mysqli->connect_errno) {
 
 if ($mysqli->query("INSERT into card_operation (operation,code_operation) VALUES ('$operation','$code_operation')")) {
     $data = "Cтрока успешно добавлена в таблицу $table";
+} else {
+    $data = "Cтрока не добавлена в таблицу $table. Данные введены с ошибкой!!!";
 }
 
 $mysqli->close();
@@ -190,7 +386,29 @@ $mysqli->close();
     }
     
     
+         public function update_db_data_option_card($table,$id,$operation,$code_operation) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        $operation = $mysqli->real_escape_string($operation);
+        $code_operation = $mysqli -> real_escape_string($code_operation);
+
+if ($mysqli->query("UPDATE card_operation SET operation='$operation',code_operation = '$code_operation' WHERE id_operation = $id")) {
+    $data = "Cтрока успешно обновленна в таблице $table";
+} else {
+    $data = "Cтрока не обновлена в таблице $table. Данные введены с ошибкой!!!";
+}
+
+$mysqli->close();
     
+        return $data;
+        
+    }
     
         
 public function del_db_data($table,$id) {

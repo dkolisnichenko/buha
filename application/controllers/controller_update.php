@@ -1,11 +1,11 @@
 <?php
 
-class Controller_Save extends Controller    
+class Controller_Update extends Controller    
 {
     
    	function __construct()
 	{
-		$this->model = new Model_Save();
+		$this->model = new Model_Update();
 		$this->view = new View();
        
 	}
@@ -22,10 +22,10 @@ class Controller_Save extends Controller
             $item = $data['item'];
             $sum = $data['sum'];  
             $coment = $data['coment']; 
-                                       
+            $id= $GLOBALS['id'];               
                 
         $conect = new DB();   
-        $data = $conect -> set_db_data($table,$date,$kat,$item,$sum,$coment); 
+        $data = $conect -> update_db_data($table,$id,$date,$kat,$item,$sum,$coment); 
                            
         $this->view->generate('save_view.php', 'template_view.php',$data);             
         }  
@@ -44,28 +44,29 @@ class Controller_Save extends Controller
             $sum = $data['sum'];  
             $coment = $data['coment'];            
                     
+        $id= $GLOBALS['id'];               
+                
         $conect = new DB();   
-        $data = $conect -> set_db_data($table,$date,$kat,$item,$sum,$coment); 
+        $data = $conect -> update_db_data($table,$id,$date,$kat,$item,$sum,$coment); 
                            
-        $this->view->generate('save_view.php', 'template_view.php',$data); 
+        $this->view->generate('save_view.php', 'template_view.php',$data);  
         }  
     
     
         function action_balance() {
             
-         
-             $GLOBALS["balance"] =200;
-            
+             $GLOBALS["balance"] =200;           
                        
-            $table = 'full_d';             
+            $table = 'card_zp';             
             $data = $this->model->get_data();            
             $date = $data['date']; 
             $operation = $data['operation'];            
             $sum = $data['sum'];  
-            $coment = $data['coment'];            
-                    
+            $coment = $data['coment'];  
+            $id= $GLOBALS['id']; 
+            
         $conect = new DB();   
-        $data = $conect -> set_db_data_balance($date,$operation,$sum,$coment); 
+        $data = $conect -> update_db_data_balance($id,$date,$operation,$sum,$coment); 
                            
         $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
@@ -80,11 +81,12 @@ class Controller_Save extends Controller
              $table = 'kat';        
             
             $data = $this->model->get_data();     
-            $kat= $data['kat'];            
+            $kat= $data['kat'];   
+            $id= $GLOBALS['id']; 
                    
         $conect = new DB();   
         $data = $conect ->         
-            set_db_data_option($table,$kat);            
+            update_db_data_option($table,$id,$kat);            
              
             $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
@@ -101,10 +103,12 @@ class Controller_Save extends Controller
             
             $data = $this->model->get_data();     
             $kat= $data['kat'];            
-                   
+            $id= $GLOBALS['id']; 
+        
+        
         $conect = new DB();   
         $data = $conect ->         
-            set_db_data_option($table,$kat);            
+            update_db_data_option($table,$id,$kat);            
              
             $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  
@@ -117,14 +121,14 @@ class Controller_Save extends Controller
             
             // Нужно Записать данные в БД            
              $table = 'card_operation';        
-            
+            $id= $GLOBALS['id'];
             $data = $this->model->get_data();     
             $operation = $data['operation'];            
             $code_operation = $data['code_operation'];            
                    
         $conect = new DB();   
         $data = $conect ->         
-            set_db_data_option_card ($table, $operation, $code_operation);            
+            update_db_data_option_card ($table,$id, $operation, $code_operation);            
              
             $this->view->generate('save_view.php', 'template_view.php',$data); 
         }  

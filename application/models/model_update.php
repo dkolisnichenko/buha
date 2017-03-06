@@ -1,11 +1,12 @@
 <?php 
-class Model_Save extends Model
+class Model_Update extends Model
 {
       
 	public function get_data() {
         
         
       
+             
             $data['date']  = $_POST['date'];
             $data['kat']  =  $_POST['kat'];
            $data['item']  = $_POST['item'];
