@@ -13,7 +13,9 @@ class Controller_Add extends Controller
 	
 	    function action_rashod() {
             
-             $GLOBALS["balance"] =200;
+        $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
+             
             
             $link = "rashod";  
             
@@ -28,7 +30,8 @@ class Controller_Add extends Controller
     	
 	    function action_dohod() {
             
-            $GLOBALS["balance"] =200;
+        $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "dohod";   
               
@@ -40,7 +43,8 @@ class Controller_Add extends Controller
            
     	    function action_balance() {
             
-            $GLOBALS["balance"] =200;
+                     $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "balance";   
                 
@@ -54,7 +58,8 @@ class Controller_Add extends Controller
     
     	    function action_cat() {
             
-            $GLOBALS["balance"] =200;
+                    $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "cat";   
               
@@ -66,7 +71,8 @@ class Controller_Add extends Controller
     
        	    function action_item() {
             
-            $GLOBALS["balance"] =200;
+                   $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "item";   
               
@@ -79,7 +85,8 @@ class Controller_Add extends Controller
     
        	    function action_card() {
             
-            $GLOBALS["balance"] =200;
+            $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "card";   
               

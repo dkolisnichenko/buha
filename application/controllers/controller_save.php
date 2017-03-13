@@ -12,7 +12,8 @@ class Controller_Save extends Controller
 	
 	    function action_rashod() {
             
-             $GLOBALS["balance"] =200;
+                     $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'full';
                 
@@ -33,8 +34,8 @@ class Controller_Save extends Controller
     
 	    function action_dohod() {            
          
-             $GLOBALS["balance"] =200;
-            
+                      $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             $table = 'full_d';        
             
             $data = $this->model->get_data();            
@@ -54,10 +55,10 @@ class Controller_Save extends Controller
         function action_balance() {
             
          
-             $GLOBALS["balance"] =200;
-            
-                       
-            $table = 'full_d';             
+                      $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
+                                   
+                      
             $data = $this->model->get_data();            
             $date = $data['date']; 
             $operation = $data['operation'];            
@@ -74,7 +75,8 @@ class Controller_Save extends Controller
         function action_cat() {
             
          
-             $GLOBALS["balance"] =200;
+                     $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             // Нужно Записать данные в БД  
              $table = 'kat';        
@@ -93,7 +95,8 @@ class Controller_Save extends Controller
     function action_item() {
             
          
-             $GLOBALS["balance"] =200;
+                      $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             // Нужно Записать данные в БД            
            
@@ -113,7 +116,8 @@ class Controller_Save extends Controller
     function action_card() {
             
          
-             $GLOBALS["balance"] =200;
+            $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             // Нужно Записать данные в БД            
              $table = 'card_operation';        

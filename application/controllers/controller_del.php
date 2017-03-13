@@ -12,7 +12,8 @@ class Controller_Del extends Controller
 	
 	    function action_rashod() {
             
-             $GLOBALS["balance"] =200;
+                      $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'full';            
             $id=  $GLOBALS["id"];
@@ -27,7 +28,8 @@ class Controller_Del extends Controller
 	    function action_dohod() {
             
          
-             $GLOBALS["balance"] =200;
+                         $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
               $table = 'full_d';            
             $id=  $GLOBALS["id"];
@@ -41,7 +43,8 @@ class Controller_Del extends Controller
         function action_balance() {
             
          
-             $GLOBALS["balance"] =200;
+                         $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'card_zp';            
             $id=  $GLOBALS["id"];
@@ -55,7 +58,8 @@ class Controller_Del extends Controller
         function action_cat() {
             
          
-             $GLOBALS["balance"] =200;
+                        $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'kat';            
             $id=  $GLOBALS["id"];
@@ -69,7 +73,8 @@ class Controller_Del extends Controller
     function action_item() {
             
          
-             $GLOBALS["balance"] =200;
+                         $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'item';            
             $id=  $GLOBALS["id"];
@@ -84,7 +89,8 @@ class Controller_Del extends Controller
     function action_card() {
             
          
-             $GLOBALS["balance"] =200;
+                        $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $table = 'card_operation';            
             $id=  $GLOBALS["id"];

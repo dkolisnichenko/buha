@@ -16,7 +16,8 @@ class Controller_Dohod extends Controller
     
 	function action_index()
 	{	
-           $GLOBALS["balance"] =200;
+                    $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
         
        $data = $this->model->get_data();
         $title_table=$data[0];

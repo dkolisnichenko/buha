@@ -13,7 +13,8 @@ class Controller_Edit extends Controller
 	
 	    function action_rashod() {
             
-             $GLOBALS["balance"] =200;
+                     $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "rashod";   
               
@@ -29,7 +30,8 @@ class Controller_Edit extends Controller
     
     	
 	    function action_dohod() {
-                         $GLOBALS["balance"] =200;
+        $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "dohod";   
               
@@ -46,7 +48,8 @@ class Controller_Edit extends Controller
            
     	    function action_balance() {
             
-                $GLOBALS["balance"] =200;
+                       $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
                             
             $link = "balance";   
               
@@ -61,7 +64,8 @@ class Controller_Edit extends Controller
         }  
          
             function action_cat() {
-                       $GLOBALS["balance"] =200;
+                                $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "cat";   
             $id=$GLOBALS['id']; 
@@ -74,7 +78,8 @@ class Controller_Edit extends Controller
         }  
     
        	    function action_item() {
-                         $GLOBALS["balance"] =200;
+                                $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "item";   
             $id=$GLOBALS['id']; 
@@ -87,7 +92,8 @@ class Controller_Edit extends Controller
     
     
        	    function action_card() {
-                       $GLOBALS["balance"] =200;
+                               $bal = new Balance();        
+         $GLOBALS["balance"] = $bal -> get_balance();
             
             $link = "card";
               

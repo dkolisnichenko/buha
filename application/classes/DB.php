@@ -91,12 +91,14 @@ if ($mysqli->connect_errno) {
     if($table =='kat') $column='id_kat';
     if($table =='item') $column='id_item';
     if($table =='card_operation') $column='id_operation';
+    if($table =='balance') $column='id_balance';
    
     $query = "SELECT $table FROM $table WHERE $column =$id";     
         
 if ($result = $mysqli->query($query)) {     
     while ($row = $result->fetch_row()) {
-        $data[$table]=$row[0];        
+        $data[$table]=$row[0]; 
+         if($table =='balance') $data = $row[0];
     }  
        $result->close();
 }
@@ -252,16 +254,21 @@ if ($mysqli->connect_errno) {
         $sum= $mysqli->real_escape_string($sum);
         $coment= $mysqli->real_escape_string($coment);
 
+           $bal = new Balance();
+           $balance = $bal -> get_balance();
+    
     //Определяем колонку в таблице для записи sum.
 if(substr_count($operation,'Корректировка') > 0)
-    $column = 'correction'; 
+{$column = 'correction'; $balance += $sum;}
 if(substr_count($operation,'Снятие') > 0 or substr_count($operation,'Оплата') > 0)
-    $column = 'zp_sn';  
+{$column = 'zp_sn';  $balance -= $sum;}
 if(substr_count($operation,'Зачисление') > 0 or substr_count($operation,'Начисление') > 0)
-    $column = 'zp_nach';
+{$column = 'zp_nach';$balance += $sum;}
             
 if ($mysqli->query("INSERT into card_zp (date,operation,$column,coment) VALUES ('$date','$operation','$sum','$coment')")) {
     $data = "Cтрока успешно добавлена в таблицу!";
+    
+     $d = $bal -> set_balance($balance);
 } else {
     $data = "Cтрока не добавлена в таблицу. Данные введены с ошибкой!!!";
 }
@@ -286,13 +293,18 @@ if ($mysqli->connect_errno) {
         $sum= $mysqli->real_escape_string($sum);
         $coment= $mysqli->real_escape_string($coment);
 
+           $bal = new Balance();        
+           $balance = $bal -> get_balance();
+           $d = $bal -> del_balance($balance,$id);
+           $balance = $bal -> get_balance();
+    
     //Определяем колонку в таблице для записи sum.
 if(substr_count($operation,'Корректировка') > 0)
-    $column = 'correction'; 
+{$column = 'correction'; $balance += $sum;}
 if(substr_count($operation,'Снятие') > 0 or substr_count($operation,'Оплата') > 0)
-    $column = 'zp_sn';  
+{$column = 'zp_sn';  $balance -= $sum;}
 if(substr_count($operation,'Зачисление') > 0 or substr_count($operation,'Начисление') > 0)
-    $column = 'zp_nach';
+{$column = 'zp_nach';$balance += $sum;}
         
 if ($mysqli->query("UPDATE card_zp  SET date ='$date' , operation= '$operation',zp_nach = null,zp_sn = null,correction = null,coment= '$coment' WHERE id = $id ")) 
 {
@@ -300,6 +312,7 @@ if ($mysqli->query("UPDATE card_zp  SET date ='$date' , operation= '$operation',
             
 if ($mysqli->query("UPDATE card_zp  SET date ='$date' , operation= '$operation',$column ='$sum',coment= '$coment' WHERE id = $id ")) {
     $data = "Cтрока успешно обновлена в таблице card_zp!";
+    $d = $bal -> set_balance($balance);
 }  else {
     $data = "Cтрока не обновленна в таблице $table. Данные введены с ошибкой!!!";
 }
@@ -348,6 +361,7 @@ if ($mysqli->connect_errno) {
             $col ='id';
     if($table =='kat') $col='id_kat';
     if($table =='item') $col='id_item';
+    if($table =='balance') $col='id_balance';
 
 if ($mysqli->query("UPDATE $table  SET $table='$column'  WHERE $col = $id")) {
     $data = "Cтрока успешно обновлена в таблице $table";
@@ -415,6 +429,10 @@ public function del_db_data($table,$id) {
         
 $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
 
+    $bal = new Balance();
+    $balance = $bal -> get_balance();
+    $d = $bal -> del_balance($balance,$id);
+    
 /* проверка соединения */
 if ($mysqli->connect_errno) {
     printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
@@ -427,6 +445,7 @@ if ($mysqli->connect_errno) {
     
 if ($mysqli->query("DELETE FROM $table WHERE $column = $id")) {
     $data = "Cтрока успешно удалена из таблицы $table";
+    
 }
 
 $mysqli->close();
