@@ -7,8 +7,12 @@ require_once 'classes/Table.php';
 require_once 'classes/DB.php';
 require_once 'classes/Balance.php';
 require_once 'classes/User.php';
+require_once 'classes/Access.php';
 
 // запускаем маршрутизатор
 
- if ($_SESSION['auth'] !='Yes')
-  Route::login();  else Route::start(); 
+  
+ if ($_SESSION['auth'] =='Yes')  Route::start(); else Route::login(); 
+
+
+ 

@@ -480,5 +480,128 @@ $mysqli->close();
         return $data;        
     }
 
+public function check_ip_access($ip) {
+        
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+   
+    $query = "SELECT ip,atempt,time FROM access WHERE ip ='$ip'";     
+        
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data['ip']=$row[0];  
+        $data['atempt']=$row[1];  
+        $data['time']=$row[2];  
+          
+    }  
+      $result->close();
+}
+$mysqli->close();            
+            
+        return $data;  
+        
+    }
+    
+    public function  clear_ip_access() {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+    
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+
+    $time = time() -1800;
+if ($mysqli->query("DELETE FROM access WHERE time < '$time'")) {
+    $data = true;
+    
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+        
+    }
+    
+public function  del_ip_access($ip) {
+        
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+    
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+
+    
+if ($mysqli->query("DELETE FROM access WHERE ip = '$ip'")) {
+    $data = true;
+    
+}
+
+$mysqli->close();
+    
+        return $data;
+        
+        
+    }
+    
+public function set_ip_access($ip,$curent_time,$atempt) {
+$mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        
+        $ip= $mysqli->real_escape_string($ip);
+        $atempt = $mysqli->real_escape_string($atempt);
+        $curent_time= $mysqli->real_escape_string($curent_time);
+
+
+if ($mysqli->query("INSERT into access (ip,atempt,time) VALUES ('$ip','$atempt','$curent_time')")) {
+    $data = true;
+} else {
+    $data = false;
+}
+
+$mysqli->close();
+    
+        return $data;
+    
+    
+ }
+    
+   public function  update_ip_access($ip,$atempt) {
+       
+       $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+        $atempt = $mysqli->real_escape_string($atempt);         
+
+
+if ($mysqli->query("UPDATE access SET atempt='$atempt'  WHERE ip ='$ip'")) {
+    $data = true;
+} else {
+    $data = false;
+}
+
+$mysqli->close();
+    
+        return $data;
+       
+   }
     
 }

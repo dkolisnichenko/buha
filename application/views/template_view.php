@@ -39,7 +39,7 @@
           <a href="/" data-toggle="tooltip" data-placement="Домой" title="Вернуться на главную страницу"> <button class="btn  btn-link"  type="button"  >
          <span class="glyphicon glyphicon-home"></span>  
             </button> </a>  
- <a href="/login/logout"><button class="btn  btn-link "  type="button" >Выйти </button></a>   
+ <a href="/logout/"><button class="btn  btn-link "  type="button" >Выйти </button></a>   
 
      </div>         
          </div> 
