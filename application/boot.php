@@ -6,5 +6,9 @@ require_once 'core/route.php';
 require_once 'classes/Table.php';
 require_once 'classes/DB.php';
 require_once 'classes/Balance.php';
+require_once 'classes/User.php';
 
-Route::start(); // запускаем маршрутизатор
+// запускаем маршрутизатор
+
+ if ($_SESSION['auth'] !='Yes')
+  Route::login();  else Route::start(); 

@@ -15,7 +15,7 @@
         
     <body>
         <div class="container">
-            <h1>Домашняя Бухгалтерия <h6 class="date"> <em> <?=date("F j, Y, g:i a") ?> </em></h6></h1>   
+            <h1>Домашняя Бухгалтерия <h6 class="date"> <em> <?=date("F j, Y, g:i a") ?> </em><br> Пользователь:   <?=$_SESSION['user']  ?></h6> </h1>   
                              
         <h2>Баланс счета: <?=$GLOBALS["balance"] ?>  грн. </h2>
        
@@ -39,7 +39,7 @@
           <a href="/" data-toggle="tooltip" data-placement="Домой" title="Вернуться на главную страницу"> <button class="btn  btn-link"  type="button"  >
          <span class="glyphicon glyphicon-home"></span>  
             </button> </a>  
- <a href="logout"><button class="btn  btn-link "  type="button" >Выйти </button></a>   
+ <a href="/login/logout"><button class="btn  btn-link "  type="button" >Выйти </button></a>   
 
      </div>         
          </div> 

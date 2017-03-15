@@ -454,6 +454,31 @@ $mysqli->close();
         
     }
     
+    
+public function check_access($user) {
+      
+    $mysqli = new mysqli($this -> MYSQL_SERVER, $this -> MYSQL_USER, $this -> MYSQL_PASSWORD, $this -> MYSQL_DB );
+
+/* проверка соединения */
+if ($mysqli->connect_errno) {
+    printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+    exit();
+}
+   
+    $query = "SELECT name,pass FROM user WHERE name ='$user'";     
+        
+if ($result = $mysqli->query($query)) {     
+    while ($row = $result->fetch_row()) {
+        $data['name']=$row[0];  
+        $data['pass']=$row[1];
+  
+    }  
+      $result->close();
+}
+$mysqli->close();            
+            
+        return $data;        
+    }
 
     
 }
