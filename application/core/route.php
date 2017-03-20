@@ -3,6 +3,8 @@ class Route
 {
 	static function start()
 	{
+        
+       if ($_SESSION['auth'] =='Yes') {
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
@@ -25,6 +27,16 @@ class Route
 			$GLOBALS['id'] = $routes[3];
 		}
 
+    $controller_name = strtolower($controller_name);
+        if ($controller_name == 'admin' & $_SESSION['groupe']  !='admins') $controller_name = 'Main';
+        
+    }else {
+           
+        $controller_name = 'Login';
+		$action_name = 'index';           
+       }
+        
+        
 		// добавляем префиксы
 		$model_name = 'Model_'.$controller_name;
 		$controller_name = 'Controller_'.$controller_name;
@@ -42,6 +54,8 @@ class Route
 		// подцепляем файл с классом контроллера
 		$controller_file = strtolower($controller_name).'.php';
 		$controller_path = "application/controllers/".$controller_file;
+        
+            
 		if(file_exists($controller_path))
 		{
 			include "application/controllers/".$controller_file;

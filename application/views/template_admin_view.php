@@ -35,7 +35,8 @@
         
 
     
- <a href="stat"><button class="btn  btn-success "  type="button" >Статистика </button></a>  
+ <a href="/stat"><button class="btn  btn-success "  type="button" >Статистика </button></a>  
+<a href="/admin"><button class="btn  btn-warning "  type="button" >Панель Администратора </button></a> 
           <a href="/" data-toggle="tooltip" data-placement="Домой" title="Вернуться на главную страницу"> <button class="btn  btn-link"  type="button"  >
          <span class="glyphicon glyphicon-home"></span>  
             </button> </a>  

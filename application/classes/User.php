@@ -23,7 +23,7 @@ public function check_auth($user,$pass,$ip) {
      }
                
         // Если кол-во попыток > 3 то выходим из программы. 
-        if( $atempt_num >= 6 )  {
+        if( $atempt_num >= 10 )  {
             print('Access denied!'); 
             $auth= false; exit; 
         }                       

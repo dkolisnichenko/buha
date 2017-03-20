@@ -465,12 +465,13 @@ if ($mysqli->connect_errno) {
     exit();
 }
    
-    $query = "SELECT name,pass FROM user WHERE name ='$user'";     
+    $query = "SELECT name,pass,groupe FROM user WHERE name ='$user'";     
         
 if ($result = $mysqli->query($query)) {     
     while ($row = $result->fetch_row()) {
         $data['name']=$row[0];  
         $data['pass']=$row[1];
+        $data['groupe']=$row[2];
   
     }  
       $result->close();

@@ -19,8 +19,13 @@ class Controller_Login extends Controller
         $data = $this->model->get_data();
         
         if ($data == true ) {
-               $_SESSION['auth'] ='Yes';
-               $_SESSION['user'] = $_POST['user'];
+             $_SESSION['auth'] ='Yes';
+             $_SESSION['user'] = $_POST['user'];
+            
+            $access = new Access(); 
+            $data = $access -> get_user_pass($_SESSION['user']);
+            $_SESSION['groupe'] = $data['groupe'];
+            
             Route::start();
                   } 
         else {             

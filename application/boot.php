@@ -10,9 +10,7 @@ require_once 'classes/User.php';
 require_once 'classes/Access.php';
 
 // запускаем маршрутизатор
-
-  
- if ($_SESSION['auth'] =='Yes')  Route::start(); else Route::login(); 
+  Route::start(); 
 
 
  

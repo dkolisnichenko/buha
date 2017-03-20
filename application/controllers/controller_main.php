@@ -29,6 +29,12 @@ class Controller_Main extends Controller
             $title_table2= $data[4];
             $data_table2 =$data[5];
         
-		$this->view->generate_table('main_view.php', 'template_view.php',$title_table,$data_table,$title_table1,$data_table1,$title_table2,$data_table2);
+        if($_SESSION['groupe'] != 'admins') {
+		$this->view->generate_table('main_view.php', 'template_view.php',$title_table,$data_table,$title_table1,$data_table1,$title_table2,$data_table2); 
+        }else {       
+        
+        $this->view->generate_table('main_view.php', 'template_admin_view.php',$title_table,$data_table,$title_table1,$data_table1,$title_table2,$data_table2);
+        }
+        
 	}
 }

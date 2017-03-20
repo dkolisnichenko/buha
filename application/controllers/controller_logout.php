@@ -15,8 +15,7 @@ class Controller_Logout extends Controller
 	function action_index()
 	{	
       
-     $conect =new DB();
-    $del = $conect ->del_ip_access('127.0.0.1'); 
+
     unset($_SESSION['auth']);
     unset($_SESSION['user']);
         
